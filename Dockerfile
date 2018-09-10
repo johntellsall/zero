@@ -4,12 +4,9 @@ WORKDIR /code
 
 RUN apt update && apt install -y python-fuse
 
-# ADD ./requirements.txt /code
-# RUN pip install -qr requirements.txt
-
 ADD . /code
 
-RUN pip install -e .
+RUN pip install -e ".[testing]"
 
 RUN mkdir -p /root/.config/zero/
 COPY test-config.yml /root/.config/zero/config.yml
